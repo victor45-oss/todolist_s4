@@ -41,12 +41,6 @@ class Todo
      */
     private $todoFor;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="todos")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category_id;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -108,18 +102,6 @@ class Todo
     public function setTodoFor(\DateTimeInterface $todoFor): self
     {
         $this->todoFor = $todoFor;
-
-        return $this;
-    }
-
-    public function getCategoryId(): ?Category
-    {
-        return $this->category_id;
-    }
-
-    public function setCategoryId(?Category $category_id): self
-    {
-        $this->category_id = $category_id;
 
         return $this;
     }
