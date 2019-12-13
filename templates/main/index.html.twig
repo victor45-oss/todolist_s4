@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent() }} Page d'accueil{% endblock %}
+
+{% block body %}
+
+{{ parent()}}
+
+<div class="container mt-5">
+<h2 class="text-center my-5">Liste de mes todos</h2>
+<a href="{{ path('create_todo')}}" class="btn btn-danger mb-5">Nouvelle Todo</a>
+    <table class="table table-striped">
+    <tr>
+        <th>Titre</th>
+        <th>Catégorie</th>
+        <th>Créé le</th>
+        <th>Modifié le</th>
+        <th>Actions</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for todo in todos %}
+        <tr>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.category.name }}</td>
+            <td>{{ todo.createdAt | date('d-m-Y')}}</td>
+            <td>{{ todo.updatedAt | date('d-m-Y')}}</td>
+            <td><a href="" class="btn btn-success">Voir</a></td>
+            <td><a href="{{ path('update_todo', {'id': todo.id}) }}" class="btn btn-info">Editer</a></td>
+            <td><a href="{{ path('update_todo', {'id': todo.id}) }}" class="btn btn-info">Effacer</a></td>
+
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+<hr>
+
+{# {{ dump(app) }}#}
+
+
+{% for message in app.flashes('success') %}
+    <div class="container">
+    <div class="alert alert-success">
+        {{ message }}
+        </div>
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('danger') %}
+    <div class="container">
+    <div class="alert alert-danger">
+        {{ message }}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

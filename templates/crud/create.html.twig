@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} page create {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 my-5"><h2 class='text-center'>Création d'une Todo</h2></div>
+        <div class="col-6">
+        {{ form_start(myform)}}
+        {{ form_widget(myform)}}
+        {{ form_end(myform)}}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
